@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Office temp files
+~$*
+
+# Báo cáo/slide Word-PowerPoint (không đưa lên repo mã nguồn)
+presentation/

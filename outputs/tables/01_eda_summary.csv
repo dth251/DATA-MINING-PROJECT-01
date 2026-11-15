@@ -1,0 +1,2 @@
+total_records,exact_duplicate_rows,unique_members,unique_dates,unique_items,total_transactions,avg_items_per_transaction,min_items_per_transaction,max_items_per_transaction
+38765,759,3898,728,167,14963,2.54,1,10

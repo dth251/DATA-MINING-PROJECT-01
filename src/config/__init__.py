@@ -1,0 +1,17 @@
+"""Subpackage cấu hình tham số và đường dẫn của dự án."""
+
+from .settings import (
+    BASE_DIR,
+    DATA_RAW_DIR,
+    DATA_PROCESSED_DIR,
+    RAW_DATA_FILE,
+    MATRIX_OUTPUT_FILE,
+    OUTPUT_FIGURES_DIR,
+    OUTPUT_TABLES_DIR,
+    SUPPORT_THRESHOLDS,
+    CONFIDENCE_THRESHOLDS,
+    DEFAULT_MIN_SUPPORT,
+    DEFAULT_MIN_CONFIDENCE,
+    MIN_LIFT_THRESHOLD,
+)
+

@@ -1,0 +1,6 @@
+min_support,frequent_itemsets,apriori_runtime_ms,fpgrowth_runtime_ms,speedup_ratio (Apriori/FP),apriori_peak_mem_mb,fpgrowth_peak_mem_mb,memory_ratio (Apriori/FP)
+0.001,750,1000.45,109.02,9.18,472.316,3.531,133.76
+0.002,330,328.04,85.05,3.86,337.374,3.03,111.34
+0.003,216,262.05,101.78,2.57,261.573,2.82,92.76
+0.005,126,149.35,80.59,1.85,167.829,2.451,68.47
+0.01,69,80.84,72.65,1.11,86.46,1.87,46.24
