@@ -8,5 +8,5 @@ venv/
 # Office temp files
 ~$*
 
-# Báo cáo/slide Word-PowerPoint (không đưa lên repo mã nguồn)
-presentation/
+# Bản slide dự phòng (trùng với BAO_CAO_PROJECT-DATA-MINING.pptx)
+presentation/Slide_Market_Basket_Analysis.pptx
