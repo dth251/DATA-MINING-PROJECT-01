@@ -7,6 +7,3 @@ venv/
 
 # Office temp files
 ~$*
-
-# Bản slide dự phòng (trùng với BAO_CAO_PROJECT-DATA-MINING.pptx)
-presentation/Slide_Market_Basket_Analysis.pptx
