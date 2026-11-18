@@ -3,6 +3,7 @@ Module cấu hình tham số, đường dẫn thư mục và các ngưỡng th�
 cho bài toán Supermarket Market Basket Analysis.
 """
 
+import math
 from pathlib import Path
 
 # Đường dẫn gốc của dự án (assignment/)
@@ -18,8 +19,12 @@ MATRIX_OUTPUT_FILE = DATA_PROCESSED_DIR / "basket_matrix.csv"
 OUTPUT_FIGURES_DIR = BASE_DIR / "outputs" / "figures"
 OUTPUT_TABLES_DIR = BASE_DIR / "outputs" / "tables"
 
-# Các ngưỡng thực nghiệm cho Apriori và FP-Growth
-SUPPORT_THRESHOLDS = [0.001, 0.002, 0.003, 0.005, 0.01]
+# Các ngưỡng thực nghiệm cho Apriori và FP-Growth, khai báo theo số giỏ hàng tối thiểu
+# (min_support = số giỏ / tổng số giỏ). Tổng số giỏ (Member_number + Date) của bộ dữ liệu là 14.963.
+N_TRANSACTIONS = 14963
+SUPPORT_BASKET_COUNTS = [10, 25, 50, 75, 100, 200]
+# Làm tròn xuống 6 chữ số thập phân để itemset xuất hiện đúng `count` giỏ vẫn đạt ngưỡng
+SUPPORT_THRESHOLDS = [math.floor(c / N_TRANSACTIONS * 1e6) / 1e6 for c in SUPPORT_BASKET_COUNTS]
 CONFIDENCE_THRESHOLDS = [0.05, 0.10, 0.15, 0.20]
 
 # Ngưỡng mặc định để phân tích sâu tập luật kết hợp
