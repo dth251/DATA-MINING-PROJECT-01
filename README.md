@@ -39,8 +39,8 @@ assignment/
 ├── notebooks/
 │   └── market_basket_analysis.ipynb     # Notebook trình bày kết quả thực nghiệm trực quan
 ├── outputs/
-│   ├── figures/                         # Chứa 4 biểu đồ (.png) phục vụ báo cáo
-│   └── tables/                          # Chứa 6 bảng thống kê & tập luật (.csv)
+│   ├── figures/                         # 3 biểu đồ: hiệu năng, heatmap Support/Confidence, luật Lift > 1
+│   └── tables/                          # Thống kê EDA, kết quả 2 thuật toán, tập luật Lift > 1, gợi ý Cross-selling / Layout & support từng mặt hàng
 ├── tests/
 │   └── test_pipeline.py                 # Kiểm thử tự động (Unit Tests)
 ├── main.py                              # Kịch bản chính chạy toàn bộ pipeline

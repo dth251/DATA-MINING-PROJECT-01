@@ -34,11 +34,11 @@ from src.algorithms import (
 from src.evaluation import compare_algorithms_performance
 from src.business_strategy import (
     filter_positive_lift_rules,
+    filter_lift_rules_by_confidence,
     recommend_cross_selling,
     recommend_store_layout,
 )
 from src.visualization import (
-    plot_top_items,
     plot_performance_comparison,
     plot_support_confidence_heatmap,
     plot_rules_distribution,
@@ -122,16 +122,27 @@ def main() -> None:
     display_cols = ["rule_str", "support", "confidence", "lift", "conviction"]
     print(rules_lift_gt1[display_cols].head(10).to_string(index=False))
 
+    print(
+        f"\n--- LỌC LUẬT LIFT > {MIN_LIFT_THRESHOLD} THEO TỪNG NGƯỠNG MIN_CONFIDENCE "
+        f"(min_support={DEFAULT_MIN_SUPPORT}) ---"
+    )
+    conf_summary_df, conf_rules_df = filter_lift_rules_by_confidence(
+        freq_items,
+        confidence_list=CONFIDENCE_THRESHOLDS,
+        min_lift=MIN_LIFT_THRESHOLD,
+    )
+    conf_summary_df.to_csv(OUTPUT_TABLES_DIR / "07_lift_rules_summary_by_confidence.csv", index=False)
+    conf_rules_df.to_csv(OUTPUT_TABLES_DIR / "08_lift_rules_by_confidence.csv", index=False)
+    print(conf_summary_df.to_string(index=False))
+
     # -------------------------------------------------------------------------
     # Bước 5: Trực quan hóa dữ liệu và kết quả thực nghiệm
     # -------------------------------------------------------------------------
     print("\n[5/5] Đang xuất các biểu đồ trực quan hóa vào outputs/figures/...")
-    fig1 = plot_top_items(df_raw, OUTPUT_FIGURES_DIR)
     fig2 = plot_performance_comparison(benchmark_df, OUTPUT_FIGURES_DIR)
     fig3 = plot_support_confidence_heatmap(grid_df, OUTPUT_FIGURES_DIR)
     fig4 = plot_rules_distribution(all_rules, OUTPUT_FIGURES_DIR)
 
-    print(f"  - Đã lưu: {fig1.name}")
     print(f"  - Đã lưu: {fig2.name}")
     print(f"  - Đã lưu: {fig3.name}")
     print(f"  - Đã lưu: {fig4.name}")

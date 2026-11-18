@@ -21,8 +21,6 @@
 | Số mặt hàng trung bình / giỏ | `2.54` (Min: `1`, Max: `10`) | Giỏ hàng nhỏ -> cần đặt `min_support` thấp |
 | Độ thưa của ma trận (Matrix Sparsity) | **`98.48%`** | Chỉ `1.52%` ô trong ma trận mang giá trị `True` |
 
-![Biểu đồ Top 20 mặt hàng và Phân phối kích thước giỏ hàng](outputs/figures/01_eda_top_items_and_basket_size.png)
-
 ---
 
 ## 2. Nhiệm vụ 2: Thực thi Apriori & FP-Growth với nhiều ngưỡng Support / Confidence

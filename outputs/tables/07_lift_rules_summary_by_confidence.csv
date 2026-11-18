@@ -1,0 +1,5 @@
+min_confidence,total_rules,rules_lift_gt_min,pct_lift_gt_min,max_lift,mean_lift
+0.05,450,94,20.89,2.1829,1.2
+0.1,130,37,28.46,2.1829,1.2385
+0.15,10,8,80.0,1.9118,1.2822
+0.2,2,2,100.0,1.6199,1.4827

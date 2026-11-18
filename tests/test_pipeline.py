@@ -7,7 +7,7 @@ import unittest
 from src.config import RAW_DATA_FILE
 from src.data_processing import load_raw_data, group_transactions, create_basket_matrix
 from src.algorithms import run_apriori, run_fpgrowth, generate_rules
-from src.business_strategy import filter_positive_lift_rules
+from src.business_strategy import filter_positive_lift_rules, filter_lift_rules_by_confidence
 
 
 class TestMarketBasketPipeline(unittest.TestCase):
@@ -36,6 +36,16 @@ class TestMarketBasketPipeline(unittest.TestCase):
         lift_gt1 = filter_positive_lift_rules(rules, min_lift=1.0)
         self.assertFalse(lift_gt1.empty)
         self.assertTrue((lift_gt1["lift"] > 1.0).all())
+
+    def test_lift_filtering_by_confidence(self):
+        """Kiểm tra lọc Lift > 1 theo nhiều ngưỡng min_confidence."""
+        fp_items = run_fpgrowth(self.matrix, min_support=0.001)
+        conf_list = [0.05, 0.10, 0.15, 0.20]
+        summary, rules = filter_lift_rules_by_confidence(fp_items, conf_list, min_lift=1.0)
+        self.assertEqual(summary["min_confidence"].tolist(), conf_list)
+        self.assertEqual(summary["rules_lift_gt_min"].tolist(), [94, 37, 8, 2])
+        self.assertTrue((rules["lift"] > 1.0).all())
+        self.assertTrue((rules["confidence"] >= rules["min_confidence"]).all())
 
 
 if __name__ == "__main__":
