@@ -5,7 +5,8 @@ Module sinh luật kết hợp (Association Rules) và thực nghiệm đa ngư�
 import pandas as pd
 from typing import List
 from mlxtend.frequent_patterns import association_rules
-from .frequent_itemsets import run_apriori, run_fpgrowth
+from .apriori import run_apriori
+from .fpgrowth import run_fpgrowth
 
 
 def format_itemset(itemset: frozenset) -> str:

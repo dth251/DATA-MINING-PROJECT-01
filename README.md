@@ -22,7 +22,9 @@ assignment/
 │   │   └── matrix_builder.py            # Gom nhóm giỏ hàng & mã hóa ma trận nhị phân
 │   ├── algorithms/
 │   │   ├── __init__.py
-│   │   ├── frequent_itemsets.py         # Thực thi Apriori và FP-Growth
+│   │   ├── apriori.py                   # Thực thi thuật toán Apriori
+│   │   ├── fpgrowth.py                  # Thực thi thuật toán FP-Growth
+│   │   ├── frequent_itemsets.py         # Điều phối chạy Apriori hoặc FP-Growth theo tên
 │   │   └── association_rules.py         # Sinh luật kết hợp đa ngưỡng Support/Confidence
 │   ├── evaluation/
 │   │   ├── __init__.py

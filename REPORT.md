@@ -27,7 +27,7 @@
 
 ## 2. Nhiệm vụ 2: Thực thi Apriori & FP-Growth với nhiều ngưỡng Support / Confidence
 
-* **Mã nguồn thực thi:** `src/algorithms/frequent_itemsets.py` & `src/algorithms/association_rules.py`
+* **Mã nguồn thực thi:** `src/algorithms/apriori.py`, `src/algorithms/fpgrowth.py` & `src/algorithms/association_rules.py`
 * **Bảng kết quả thực nghiệm đa ngưỡng (`outputs/tables/02_support_confidence_grid.csv`):**
 
 | `min_support` | Tổng tập phổ biến | Tập có độ dài >= 2 | Khớp Apriori & FP-Growth | Số luật (`conf=0.05`) | Số luật (`conf=0.10`) | Số luật (`conf=0.15`) | Số luật (`conf=0.20`) | Số luật Lift > 1 (`conf=0.10`) |
