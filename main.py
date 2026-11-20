@@ -104,6 +104,20 @@ def main() -> None:
         f"min_confidence={DEFAULT_MIN_CONFIDENCE} và lọc Lift > {MIN_LIFT_THRESHOLD}..."
     )
     freq_items = mine_frequent_itemsets(basket_matrix, min_support=DEFAULT_MIN_SUPPORT, algorithm="fpgrowth")
+
+    print(
+        f"\n--- LỌC LUẬT LIFT > {MIN_LIFT_THRESHOLD} THEO TỪNG NGƯỠNG MIN_CONFIDENCE "
+        f"(min_support={DEFAULT_MIN_SUPPORT}) ---"
+    )
+    conf_summary_df, conf_rules_df = filter_lift_rules_by_confidence(
+        freq_items,
+        confidence_list=CONFIDENCE_THRESHOLDS,
+        min_lift=MIN_LIFT_THRESHOLD,
+    )
+    conf_summary_df.to_csv(OUTPUT_TABLES_DIR / "07_lift_rules_summary_by_confidence.csv", index=False)
+    conf_rules_df.to_csv(OUTPUT_TABLES_DIR / "08_lift_rules_by_confidence.csv", index=False)
+    print(conf_summary_df.to_string(index=False))
+
     all_rules = generate_rules(freq_items, min_confidence=DEFAULT_MIN_CONFIDENCE)
     rules_lift_gt1 = filter_positive_lift_rules(all_rules, min_lift=MIN_LIFT_THRESHOLD)
 
@@ -121,19 +135,6 @@ def main() -> None:
     print("\n--- TOP 10 LUẬT KẾT HỢP CÓ LIFT > 1 MẠNH NHẤT ---")
     display_cols = ["rule_str", "support", "confidence", "lift", "conviction"]
     print(rules_lift_gt1[display_cols].head(10).to_string(index=False))
-
-    print(
-        f"\n--- LỌC LUẬT LIFT > {MIN_LIFT_THRESHOLD} THEO TỪNG NGƯỠNG MIN_CONFIDENCE "
-        f"(min_support={DEFAULT_MIN_SUPPORT}) ---"
-    )
-    conf_summary_df, conf_rules_df = filter_lift_rules_by_confidence(
-        freq_items,
-        confidence_list=CONFIDENCE_THRESHOLDS,
-        min_lift=MIN_LIFT_THRESHOLD,
-    )
-    conf_summary_df.to_csv(OUTPUT_TABLES_DIR / "07_lift_rules_summary_by_confidence.csv", index=False)
-    conf_rules_df.to_csv(OUTPUT_TABLES_DIR / "08_lift_rules_by_confidence.csv", index=False)
-    print(conf_summary_df.to_string(index=False))
 
     # -------------------------------------------------------------------------
     # Bước 5: Trực quan hóa dữ liệu và kết quả thực nghiệm
