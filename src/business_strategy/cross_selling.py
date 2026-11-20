@@ -81,8 +81,6 @@ def recommend_cross_selling(rules_lift_gt1: pd.DataFrame, top_n: int = 15) -> pd
         "support",
         "confidence",
         "lift",
-        "leverage",
-        "conviction",
     ]
     available_cols = [c for c in cols if c in rules_lift_gt1.columns]
     top_rules = rules_lift_gt1[available_cols].head(top_n).copy()

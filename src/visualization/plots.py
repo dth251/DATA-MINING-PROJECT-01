@@ -119,7 +119,7 @@ def plot_support_confidence_heatmap(grid_df: pd.DataFrame, output_dir: Path) -> 
     return save_path
 
 
-def plot_rules_distribution(rules_df: pd.DataFrame, output_dir: Path, top_n_network: int = 20) -> Path:
+def plot_rules_distribution(rules_df: pd.DataFrame, output_dir: Path, top_n_network: int = 5) -> Path:
     """Vẽ Scatter plot (Support vs Confidence, màu theo Lift) và đồ thị mạng luật kết hợp Lift > 1."""
     output_dir.mkdir(parents=True, exist_ok=True)
     if rules_df.empty:

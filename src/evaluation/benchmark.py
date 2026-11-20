@@ -65,7 +65,7 @@ def compare_algorithms_performance(
         mem_ratio = round(ap_mem / fp_mem, 2) if fp_mem > 0 else 1.0
 
         results.append(
-            {
+            { 
                 "min_support": min_sup,
                 "frequent_itemsets": fp_count,
                 "apriori_runtime_ms": ap_time,
